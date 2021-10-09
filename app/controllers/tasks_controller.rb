@@ -1,8 +1,17 @@
 class TasksController < ApplicationController
+    def new
+        @category = Category.find(params[:category_id])
+        @task = @category.tasks.new
+    end
+    
     def create
         @category = Category.find(params[:category_id])
-        @task = @category.tasks.create(task_params)
-        redirect_to category_path(@category)
+        @task = @category.tasks.new(task_params)
+        if @task.save
+            redirect_to category_path(@category)
+        else
+            render :new
+        end
     end
 
     def destroy

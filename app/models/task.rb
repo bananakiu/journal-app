@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :category
 
-  validates :name, presence: true
-  # add maximum length validation for name & description
+  validates :name, presence: true, length: { maximum: 100 }
+  validates :notes, length: { maximum: 2000 }
 end
