@@ -10,5 +10,10 @@
             data: { confirm: "Are you sure?" }
         %>
     </li>
-
 </ul>
+
+<h2>Tasks</h2>
+<%= render @category.tasks %>
+
+<h2>Add Task</h2>
+<%= render 'tasks/form' %>

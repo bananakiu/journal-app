@@ -1,0 +1,21 @@
+<%= form_with model: [ @category, @category.tasks.build ] do |form| %>
+    <p>
+        <%= form.label :name %><br>
+        <%= form.text_field :name %>
+    </p>
+    <p>
+        <%= form.label :notes %><br>
+        <%= form.text_area :notes %>
+    </p>
+    <p>
+        <%= form.label :date %><br>
+        <%= form.date_select :date %>
+    </p>
+    <p>
+        <%= form.check_box :complete %>
+        <%= form.label :complete, "Completed?" %><br>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
