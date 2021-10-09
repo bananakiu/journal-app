@@ -17,3 +17,12 @@
     <strong>Completed?</strong>
     <%= task.complete %>
 </p>
+
+<p>
+    <%=
+        link_to 'Delete task',
+            [task.category, task],
+            method: :delete,
+            data: { confirm: "Are you sure?" }
+    %>
+</p>
