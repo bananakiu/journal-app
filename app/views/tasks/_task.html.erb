@@ -19,6 +19,7 @@
 </p>
 
 <p>
+    <%= link_to "Expand", category_task_path(@category, task.id) %>
     <%= link_to "Edit task", edit_category_task_path(@category, task.id) %>
     <%=
         link_to 'Delete task',

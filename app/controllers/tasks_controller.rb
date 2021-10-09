@@ -5,6 +5,9 @@ class TasksController < ApplicationController
     def index
         redirect_to @category
     end
+
+    def show
+    end
     
     def new
         @task = @category.tasks.new
