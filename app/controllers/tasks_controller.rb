@@ -41,7 +41,8 @@ class TasksController < ApplicationController
     
     private
         def set_category
-            @category = Category.find(params[:category_id])
+            @category = current_user.categories.find_by(id: params[:category_id])
+            redirect_to categories_path, notice: "Not authorized to access/edit this." if @category.nil?
         end
 
         def set_task
