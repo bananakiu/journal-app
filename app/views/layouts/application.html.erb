@@ -10,28 +10,77 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%# navbar %>
-    <p class="navbar-text float-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <body class="bg-gray-800 text-white">
+    <header>
+      <%# navbar %>
+      <div class="
+      flex justify-between items-center
+      h-16 px-16
+      bg-green-800 
+      text-xl text-white
+      ">
+        <%# left nav-items %>
+        <ul class="flex items-center">
+          <%# logo %>
+          <li class="cursor-pointer select-none">
+            <p class="text-3xl">CanDo</p>
+          </li>
+        </ul>
+
+        <%# right nav-items %>
+        <ul class="flex items-center h-full">
+          <% if user_signed_in? %>
+            <li>
+              <div class= "px-4 py-5 h-full">
+                Welcome, <%= current_user.email %>!
+              </div>
+            </li>
+            <li>
+              <%=
+                link_to 'Edit profile',
+                edit_user_registration_path,
+                class: "px-4 py-5 h-full hover:bg-green-700"
+              %>
+            </li>
+            <li>
+              <%=
+                link_to "Logout",
+                destroy_user_session_path,
+                method: :delete,
+                class: "px-4 py-5 h-full hover:bg-green-700"
+              %>
+            </li>
+          <% else %>
+            <li>
+              <%=
+                link_to "Sign up",
+                new_user_registration_path,
+                class: "px-4 py-5 h-full hover:bg-green-700"
+              %>
+            </li>
+            <li>
+              <%=
+                link_to "Login",
+                new_user_session_path,
+                class: "px-4 py-5 h-full hover:bg-green-700"
+              %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </header>
+    
+    <main class="px-16 py-8">
+      <%# notice %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
       <% end %>
-    </p>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
 
-    <%# notice %>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
-    <%# render page %>
-    <%= yield %>
+      <%# render page %>
+      <%= yield %>
+    </main>
   </body>
 </html>
