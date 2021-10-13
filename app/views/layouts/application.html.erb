@@ -10,8 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-gray-800 text-white">
-    <header>
+  <body class="
+  flex flex-col
+  bg-gray-800 text-white h-screen
+  ">
+    <header class="">
       <%# navbar %>
       <div class="
       flex justify-between items-center
@@ -39,7 +42,7 @@
               <%=
                 link_to 'Edit profile',
                 edit_user_registration_path,
-                class: "px-4 py-5 h-full hover:bg-green-700"
+                class: "px-4 py-5 h-full hover:bg-green-700 transition-all duration-200"
               %>
             </li>
             <li>
@@ -47,7 +50,7 @@
                 link_to "Logout",
                 destroy_user_session_path,
                 method: :delete,
-                class: "px-4 py-5 h-full hover:bg-green-700"
+                class: "px-4 py-5 h-full hover:bg-green-700 transition-all duration-200"
               %>
             </li>
           <% else %>
@@ -55,14 +58,14 @@
               <%=
                 link_to "Sign up",
                 new_user_registration_path,
-                class: "px-4 py-5 h-full hover:bg-green-700"
+                class: "px-4 py-5 h-full hover:bg-green-700 transition-all duration-200"
               %>
             </li>
             <li>
               <%=
                 link_to "Login",
                 new_user_session_path,
-                class: "px-4 py-5 h-full hover:bg-green-700"
+                class: "px-4 py-5 h-full hover:bg-green-700 transition-all duration-200"
               %>
             </li>
           <% end %>
@@ -70,7 +73,11 @@
       </div>
     </header>
     
-    <main class="px-16 py-8">
+    <main class="
+    flex flex-col justify-center items-center
+    flex-grow
+    px-16 py-8
+    ">
       <%# notice %>
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
