@@ -9,6 +9,8 @@ w-96
 
   <%# form %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
     <div class="flex flex-col my-4"> <%# removed field class %>
       <%= f.label :email, class: "
       text-md text-gray-700 font-semibold mb-2
@@ -50,17 +52,14 @@ w-96
       </div>
     <% end %>
 
-    <div class="">
+    <div class="mt-8">
       <%= f.submit "Log in", class: "
-      text-white
+      w-full py-2 px-4
+      text-white font-bold
       bg-green-600 hover:bg-green-700
       rounded-lg
       cursor-pointer
       transition-all duration-200
-      font-bold py-2 px-4
-      
-      focus:outline-none
-      focus:shadow-outline
       "%>
     </div>
   <% end %>
