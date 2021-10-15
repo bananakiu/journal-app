@@ -1,18 +1,24 @@
 <div class="w-80 xl:w-1/4">
     <div class="
     flex flex-col justify-between
-    rounded-lg shadow-md
+    rounded-lg shadow-md hover:shadow-xl
     px-7 py-6 h-56 m-3
     bg-gray-700
+    transition duration-200
     ">
         <h1 class="text-3xl">
             <a href=<%= category_path(category) %>><%= category.title %></a>
         </h1>
         
         <%# details %>
-        <div class="text-gray-400">
-            <p>N Tasks</p>
-            <p>Last Updated: <%= category.updated_at.strftime("%B %d, %Y") %></p>
+        <div>
+            <p class="text-gray-300">
+                <%= category.tasks.length%> Tasks
+            </p>
+            <%# change to Updated X days/months ago %>
+            <p class="text-gray-400">
+                Last Updated: <%= category.updated_at.strftime("%B %d, %Y") %>
+            </p>
         </div>
 
         <%# options %>
@@ -28,12 +34,14 @@
             cursor-pointer
             rounded-l-lg
             select-none
+            transition duration-200
             " %>
             <%= link_to 'Edit', edit_category_path(category), class: "
             w-full px-4
             hover:bg-green-800
             cursor-pointer
             select-none
+            transition duration-200
             " %>
             <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure you want to delete this category?' }, class: "
             w-full px-4
@@ -41,8 +49,8 @@
             cursor-pointer
             rounded-r-lg
             select-none
+            transition duration-200
             " %>
         </div>
-        
     </div>
 </div>

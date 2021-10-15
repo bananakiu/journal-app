@@ -4,7 +4,6 @@
     <div class="flex flex-wrap">
         <% @categories.each do |category| %>
             <%= render 'card', category: category %>
-            <%#= link_to category.title, category %>
         <% end %>
 
         <%# new category %>
@@ -14,6 +13,7 @@
             rounded-lg shadow-md
             px-7 py-6 h-56 m-3
             bg-gray-700 hover:bg-gray-600
+            transition duration-200
             ">
                 <p class="text-5xl font-thin text-gray-400">+</p>
             </a>
