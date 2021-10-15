@@ -23,28 +23,34 @@
       text-xl text-white
       ">
         <%# left nav-items %>
-        <ul class="flex items-center">
+        <ul class="flex items-center h-full">
           <%# logo %>
           <li class="cursor-pointer select-none mr-6">
             <a href="/" class="text-3xl">CanDo</a>
           </li>
-          <li>
-            <a href="#" class="
-            px-4 py-5 h-full hover:bg-green-700 transition-all duration-200
+          <li class="h-full flex items-center justify-center">
+            <a href="/" class="
+            flex items-center justify-center
+            h-full px-4 
+            hover:bg-green-700 transition-all duration-200
             ">
               Home
             </a>
           </li>
-          <li>
-            <a href="#" class="
-            px-4 py-5 h-full hover:bg-green-700 transition-all duration-200
+          <li class="h-full flex items-center justify-center">
+            <a href=<%= categories_path %> class="
+            flex items-center justify-center
+            h-full px-4 
+            hover:bg-green-700 transition-all duration-200
             ">
               Categories
             </a>
           </li>
-          <li>
+          <li class="h-full flex items-center justify-center">
             <a href="#" class="
-            px-4 py-5 h-full hover:bg-green-700 transition-all duration-200
+            flex items-center justify-center
+            h-full px-4 
+            hover:bg-green-700 transition-all duration-200
             ">
               Tasks
             </a>
@@ -54,39 +60,55 @@
         <%# right nav-items %>
         <ul class="flex items-center h-full">
           <% if user_signed_in? %>
-            <li>
+            <li class="h-full flex items-center justify-center">
               <div class= "px-4 py-5 h-full">
                 Welcome, <%= current_user.email %>!
               </div>
             </li>
-            <li>
+            <li class="h-full flex items-center justify-center">
               <%=
                 link_to 'Edit profile',
                 edit_user_registration_path,
-                class: "px-4 py-5 h-full hover:bg-green-700 transition-all duration-200"
+                class: "
+                flex items-center justify-center
+                h-full px-4 
+                hover:bg-green-700 transition-all duration-200
+                "
               %>
             </li>
-            <li>
+            <li class="h-full flex items-center justify-center">
               <%=
                 link_to "Logout",
                 destroy_user_session_path,
                 method: :delete,
-                class: "px-4 py-5 h-full hover:bg-green-700 transition-all duration-200"
+                class: "
+                flex items-center justify-center
+                h-full px-4 
+                hover:bg-red-800 transition-all duration-200
+                "
               %>
             </li>
           <% else %>
-            <li>
+            <li class="h-full flex items-center justify-center">
               <%=
                 link_to "Sign up",
                 new_user_registration_path,
-                class: "px-4 py-5 h-full hover:bg-green-700 transition-all duration-200"
+                class: "
+                flex items-center justify-center
+                h-full px-4 
+                hover:bg-green-700 transition-all duration-200
+                "
               %>
             </li>
-            <li>
+            <li class="h-full flex items-center justify-center">
               <%=
                 link_to "Login",
                 new_user_session_path,
-                class: "px-4 py-5 h-full hover:bg-green-700 transition-all duration-200"
+                class: "
+                flex items-center justify-center
+                h-full px-4 
+                hover:bg-green-700 transition-all duration-200
+                "
               %>
             </li>
           <% end %>
