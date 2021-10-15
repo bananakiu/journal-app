@@ -1,7 +1,12 @@
 <%= form_with model: @category do |form| %>
-    <div>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %>
+    <div class="flex flex-col mb-8">
+        <%= form.label :title, class: "text-xl font-semibold" %>
+        <%= form.text_field :title, class: "
+        w-full px-4 py-2
+        text-base text-black
+        border border-gray-300 rounded-md
+        focus:outline-none focus:border-gray-500
+        " %>
         <% @category.errors.full_messages_for(:title).each do |message| %>
             <div><%= message %></div>
         <% end %>
@@ -14,9 +19,13 @@
             type: :hidden
         %>
     </div>
-    <div><%= current_user.inspect %></div>
 
-    <div>
-        <%= form.submit %>
-    </div>
+    <%= form.submit btn_msg, class: "
+    flex items-center justify-center
+    bg-green-700 hover:bg-green-800 text-white
+    py-2 px-6 w-full sm:w-auto
+    text-lg
+    rounded-md
+    cursor-pointer
+    "%>
 <% end %>
