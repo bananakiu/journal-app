@@ -1,13 +1,22 @@
 <div class="w-full h-full">
-    <h1>Categories</h1>
+    <h1 class="text-4xl mb-6 mx-3">Task Categories</h1>
 
-    <ul>
+    <div class="flex flex-wrap">
         <% @categories.each do |category| %>
-            <li>
-                <%= link_to category.title, category %>
-            </li>
+            <%= render 'card', category: category %>
+            <%#= link_to category.title, category %>
         <% end %>
-    </ul>
 
-    <%= link_to "New Category", new_category_path %>
+        <%# new category %>
+        <div class="w-80 xl:w-1/4">
+            <a href=<%= new_category_path %> class="
+            flex flex-col justify-center items-center
+            rounded-lg shadow-md
+            px-7 py-6 h-56 m-3
+            bg-gray-700 hover:bg-gray-600
+            ">
+                <p class="text-5xl font-thin text-gray-400">+</p>
+            </a>
+        </div>
+    </div>
 </div>
