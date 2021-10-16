@@ -17,7 +17,11 @@ transition duration
     cursor-default
     ">
         <input type="checkbox" class="w-4 h-4 mr-3" <%= "checked" if task.complete %>>
-        <%= task.name %>
+        <a href=<%= category_task_path(@category, task.id) %> class="
+        hover:text-gray-300
+        ">
+            <%= task.name %>
+        </a>
     </div>
 
     <div class="
