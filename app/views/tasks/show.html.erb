@@ -1,4 +1,91 @@
-<h1><%= @task.name %></h1>
-<h1><%= @task.notes %></h1>
-<h1><%= @task.date %></h1>
-<h1><%= @task.complete %></h1>
+<div class="w-full h-full">
+    <div class="flex items-center mb-3">
+        <%# header %>
+        <h1 class="text-4xl mr-5">
+            <a href=<%= category_path(@category) %> class="
+            hover:text-gray-300
+            ">
+                <%= @category.title %>
+            </a> > 
+            <%= @task.name %>
+        </h1>
+
+        <%# navigation %>
+        <div class="flex text-3xl">
+            <% if false %>
+            <%# back %>
+            <a href=<%= category_path(@category) %> class="
+            h-full mr-5
+            text-green-400 hover:text-green-500
+            has-tooltip
+            ">
+                <i class="fas fa-long-arrow-alt-left"></i>
+                <%= render 'shared/tooltip', msg: "Back", classes: "-ml-12" %>
+            </a>
+            <% end %>
+
+            <%# edit %>
+            <a href=<%= edit_category_task_path(@category, @task.id) %> class="
+            h-full mr-4
+            text-blue-400 hover:text-blue-500
+            has-tooltip
+            ">
+                <i class="far fa-edit"></i>
+                <%= render 'shared/tooltip', msg: "Edit", classes: "-ml-10" %>
+            </a>
+
+            <%# delete %>
+            <%# TODO: add tooltip for delete %>
+            <%=
+                link_to raw("<i class\=\"far fa-trash-alt\"></i>"),
+                    [@task.category, @task],
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class: "
+                    h-full
+                    text-red-400 hover:text-red-500
+                    "
+            %>
+        </div>
+    </div>
+
+    <%# due date %>
+    <div class="
+    text-2xl cursor-default mb-5
+    <%= @task.date.nil? ? "text-gray-500" : "text-yellow-200" %>
+    ">
+        <% if !@task.date.nil? %>
+            <i class="far fa-calendar mr-2"></i> <%= @task.date.strftime("%B %d, %Y") %>
+        <% else %>
+            <i class="far fa-calendar-times mr-2"></i> No date
+        <% end %>
+    </div>
+
+    <%# notes %>
+    <div class="
+    flex flex-col
+    rounded-lg shadow-md hover:shadow-xl
+    px-7 py-6 h-56
+    bg-gray-700
+    transition duration-200 mb-5
+    ">
+        <h2 class="text-3xl mb-3 mr-5">Notes</h2>
+        <p>
+            <%= @task.notes %>
+        </p>
+    </div>
+
+    <%# other details %>
+    <div class="
+    flex flex-col
+    rounded-lg shadow-md hover:shadow-xl
+    px-7 py-6 h-56
+    bg-gray-700
+    transition duration-200
+    ">
+        <h2 class="text-3xl mb-3 mr-5">Other Details</h2>
+        <p>
+            Not sure what to put here yet
+        </p>
+    </div>
+</div>
