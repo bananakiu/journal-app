@@ -66,19 +66,17 @@
               </div>
             </li>
             <li class="h-full flex items-center justify-center">
-              <%=
-                link_to 'Edit profile',
-                edit_user_registration_path,
-                class: "
-                flex items-center justify-center
-                h-full px-4 
-                hover:bg-green-700 transition-all duration-200
-                "
-              %>
+              <a href=<%= edit_user_registration_path%> class="
+              flex items-center justify-center
+              h-full px-4 
+              hover:bg-green-700 transition-all duration-200
+              ">
+                <i class="fas fa-user-edit mr-2"></i> Edit profile
+              </a>
             </li>
             <li class="h-full flex items-center justify-center">
               <%=
-                link_to "Logout",
+                link_to raw("<i class=\"fas fa-sign-out-alt mr-2\"></i>Logout"),
                 destroy_user_session_path,
                 method: :delete,
                 class: "
@@ -91,7 +89,7 @@
           <% else %>
             <li class="h-full flex items-center justify-center">
               <%=
-                link_to "Sign up",
+                link_to raw("<i class=\"fas fa-user-plus mr-3\"></i> Sign up"),
                 new_user_registration_path,
                 class: "
                 flex items-center justify-center
@@ -102,7 +100,7 @@
             </li>
             <li class="h-full flex items-center justify-center">
               <%=
-                link_to "Login",
+                link_to raw("<i class=\"fas fa-sign-in-alt mr-3\"></i> Login"),
                 new_user_session_path,
                 class: "
                 flex items-center justify-center
