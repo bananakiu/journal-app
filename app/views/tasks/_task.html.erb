@@ -6,7 +6,9 @@ flex items-center justify-
 h-14 px-4 mb-4
 rounded-lg
 bg-gray-700
+shadow-md hover:shadow-xl
 <%= "text-gray-500 line-through" if task.complete %>
+transition duration
 ">
     <%# completion status %>
     <div class="flex items-center justify-center">
@@ -14,34 +16,36 @@ bg-gray-700
     </div>
 
     <%# task name %>
-    <div class="w-2/5">
+    <div class="w-2/5 cursor-default">
         <%= task.name %>
     </div>
 
-    <div class="w-1/3">
+    <div class="w-1/3 lg:ml-10 hidden md:block cursor-default">
         <%= task.date.strftime("%B %d, %Y") %>
     </div>
 
     <%# navigation %>
     <div class="flex-grow flex justify-end">
         <a href=<%= category_task_path(@category, task.id) %> class="
-        h-full hover:bg-black
+        h-full mr-5 text-xl
+        text-green-400 hover:text-green-500
         ">
-            Expand
+            <i class="fas fa-expand-arrows-alt"></i>
         </a>
         <a href=<%= edit_category_task_path(@category, task.id) %> class="
-        
+        h-full mr-4 text-xl
+        text-blue-400 hover:text-blue-500
         ">
-            Edit
+            <i class="far fa-edit"></i>
         </a>
         <%=
-            link_to 'Delete task',
+            link_to raw("<i class\=\"far fa-trash-alt\"></i>"),
                 [task.category, task],
                 method: :delete,
                 data: { confirm: "Are you sure?" },
                 class: "
-                flex justify-center items-center
-                h-full
+                h-full text-xl
+                text-red-400 hover:text-red-500
                 "
         %>
         
