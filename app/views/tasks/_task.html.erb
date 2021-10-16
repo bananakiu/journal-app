@@ -21,13 +21,18 @@ transition duration
     </div>
 
     <div class="
-    hidden lg:flex justify-center
+    hidden lg:flex justify-center items-center
     w-1/2
     cursor-default
     has-tooltip
+    <%= "text-gray-500" if task.date.nil? %>
     ">
-        <%= task.date.strftime("%B %d, %Y") %>
-        <%= render 'shared/tooltip', msg: task.date.strftime("%B %d, %Y") %>
+        <% if !task.date.nil? %>
+            <i class="far fa-calendar text-xl mr-2"></i> <%= task.date.strftime("%B %d, %Y") %>
+            <%= render 'shared/tooltip', msg: task.date.strftime("%B %d, %Y") %>
+        <% else %>
+            <i class="far fa-calendar-times text-xl mr-2"></i> No date
+        <% end %>
     </div>
 
     <%# navigation %>
