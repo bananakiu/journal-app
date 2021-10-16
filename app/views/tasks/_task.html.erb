@@ -29,7 +29,7 @@ transition duration
     ">
         <% if !task.date.nil? %>
             <i class="far fa-calendar text-xl mr-2"></i> <%= task.date.strftime("%B %d, %Y") %>
-            <%= render 'shared/tooltip', msg: task.date.strftime("%B %d, %Y") %>
+            <%= render 'shared/tooltip', msg: task.date.strftime("%B %d, %Y"), classes: "-mt-16" %>
         <% else %>
             <i class="far fa-calendar-times text-xl mr-2"></i> No date
         <% end %>
