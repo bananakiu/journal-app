@@ -20,8 +20,9 @@ transition duration
         <%= task.name %>
     </div>
 
-    <div class="w-1/3 lg:ml-10 hidden md:block cursor-default">
+    <div class="w-1/3 lg:ml-10 hidden md:block cursor-default has-tooltip">
         <%= task.date.strftime("%B %d, %Y") %>
+        <%= render 'shared/tooltip', msg: "Hello" %>
     </div>
 
     <%# navigation %>
