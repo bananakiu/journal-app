@@ -11,18 +11,23 @@ shadow-md hover:shadow-xl
 transition duration
 ">
     <%# completion status %>
-    <div class="flex items-center justify-center">
+    <div class="
+    flex items-center justify-start
+    w-1/2 lg:w-1/4
+    cursor-default
+    ">
         <input type="checkbox" class="w-4 h-4 mr-3" <%= "checked" if task.complete %>>
-    </div>
-
-    <%# task name %>
-    <div class="w-2/5 cursor-default">
         <%= task.name %>
     </div>
 
-    <div class="w-1/3 lg:ml-10 hidden md:block cursor-default has-tooltip">
+    <div class="
+    hidden lg:flex justify-center
+    w-1/2
+    cursor-default
+    has-tooltip
+    ">
         <%= task.date.strftime("%B %d, %Y") %>
-        <%= render 'shared/tooltip', msg: "Hello" %>
+        <%= render 'shared/tooltip', msg: task.date.strftime("%B %d, %Y") %>
     </div>
 
     <%# navigation %>
@@ -30,15 +35,20 @@ transition duration
         <a href=<%= category_task_path(@category, task.id) %> class="
         h-full mr-5 text-xl
         text-green-400 hover:text-green-500
+        has-tooltip
         ">
             <i class="fas fa-expand-arrows-alt"></i>
+            <%= render 'shared/tooltip', msg: "Expand", classes: "-ml-12" %>
         </a>
         <a href=<%= edit_category_task_path(@category, task.id) %> class="
         h-full mr-4 text-xl
         text-blue-400 hover:text-blue-500
+        has-tooltip
         ">
             <i class="far fa-edit"></i>
+            <%= render 'shared/tooltip', msg: "Edit", classes: "-ml-10" %>
         </a>
+        <%# TODO: add tooltip for delete %>
         <%=
             link_to raw("<i class\=\"far fa-trash-alt\"></i>"),
                 [task.category, task],
@@ -49,6 +59,5 @@ transition duration
                 text-red-400 hover:text-red-500
                 "
         %>
-        
     </div>
 </div>
