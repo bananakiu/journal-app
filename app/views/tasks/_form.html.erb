@@ -1,27 +1,54 @@
 <%= form_with model: [ category, task ] do |form| %>
-    <p>
-        <%= form.label :name %><br>
-        <%= form.text_field :name %>
+    <div class="flex flex-col mb-4">
+        <%= form.label :name, "Task Name", class: "text-xl font-semibold" %>
+        <%= form.text_field :name, placeholder: "Task name", class: "
+        w-full px-4 py-2
+        text-base text-black
+        border border-gray-300 rounded-md
+        focus:outline-none focus:border-gray-500
+        " %>
         <% task.errors.full_messages_for(:name).each do |message| %>
             <div><%= message %></div>
         <% end %>
-    </p>
-    <p>
-        <%= form.label :notes %><br>
-        <%= form.text_area :notes %>
+    </div>
+    <div class="flex flex-col mb-4">
+        <%= form.label :notes, class: "text-xl font-semibold" %>
+        <%= form.text_area :notes, placeholder: "Notes/comments", rows: 8, class: "
+        w-full px-4 py-2
+        text-base text-black
+        border border-gray-300 rounded-md
+        focus:outline-none focus:border-gray-500
+        " %>
         <% task.errors.full_messages_for(:notes).each do |message| %>
             <div><%= message %></div>
         <% end %>
-    </p>
-    <p>
-        <%= form.label :date %><br>
-        <%= form.date_select :date %>
-    </p>
-    <p>
-        <%= form.check_box :complete %>
-        <%= form.label :complete, "Completed?" %><br>
-    </p>
-    <p>
-        <%= form.submit %>
-    </p>
+    </div>
+    <div class="flex flex-col mb-4">
+        <%= form.label :date, "Due Date", class: "text-xl font-semibold" %>
+        <%= form.date_field :date, class: "
+        w-full px-4 py-2
+        text-base text-black
+        border border-gray-300 rounded-md
+        focus:outline-none focus:border-gray-500
+        transition duration-200
+        cursor-text
+        " %>
+    </div>
+    <div class="flex items-center mb-4">
+        <%# TODO: customize checkbox%>
+        <%= form.check_box :complete, class: "
+        w-5 h-5 cursor-pointer
+        " %>
+        <%= form.label :complete, "Completed?", class: "text-md font-semibold ml-3 cursor-pointer" %>
+    </div>
+    
+    <%= form.submit btn_msg, class: "
+    flex items-center justify-center
+    bg-green-700 hover:bg-green-800 text-white
+    py-2 px-6 mt-6 w-full sm:w-auto
+    text-lg
+    rounded-md
+    cursor-pointer
+    transition duration-200
+    "%>
 <% end %>
