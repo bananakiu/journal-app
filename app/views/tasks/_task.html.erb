@@ -30,7 +30,7 @@ transition duration
     w-1/2
     cursor-default
     has-tooltip
-    <%= "text-gray-500" if task.date.nil? %>
+    <%= task.date.nil? || task.complete ? "text-gray-500" : "text-yellow-200" %>
     ">
         <% if !task.date.nil? %>
             <i class="far fa-calendar text-xl mr-2"></i> <%= task.date.strftime("%B %d, %Y") %>
