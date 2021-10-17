@@ -1,3 +1,4 @@
+<%# TODO: add tooltip to show full title when hovering on category title %>
 <div class="w-80 xl:w-1/4">
     <div class="
     flex flex-col justify-between
@@ -7,7 +8,13 @@
     transition duration-200
     ">
         <h1 class="text-3xl">
-            <a href=<%= category_path(category) %>><%= category.title %></a>
+            <a href=<%= category_path(category) %>>
+                <% if category.title.length <= 13 %>
+                    <%= category.title %>
+                <% else %>
+                    <%= category.title[0...13] %>...
+                <% end %>
+            </a>
         </h1>
         
         <%# details %>
