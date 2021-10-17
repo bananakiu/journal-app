@@ -11,13 +11,13 @@
         </h1>
         
         <%# details %>
-        <div>
+        <div class="text-sm">
             <p class="text-gray-300">
-                <%= category.tasks.length%> Tasks
+                <i class="fas fa-thumbtack text-sm mr-2"></i><%= category.tasks.length%> Tasks
             </p>
             <%# change to Updated X days/months ago %>
             <p class="text-gray-400">
-                Last Updated: <%= category.updated_at.strftime("%B %d, %Y") %>
+                <i class="fas fa-sync text-sm mr-2"></i>Last Updated: <%= category.updated_at.strftime("%B %d, %Y") %>
             </p>
         </div>
 
