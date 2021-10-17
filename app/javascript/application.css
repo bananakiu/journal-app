@@ -8,10 +8,10 @@
 
 @layer components {
     .tooltip {
-        @apply invisible absolute;
+        @apply invisible hidden absolute;
     }
 
     .has-tooltip:hover .tooltip {
-        @apply visible z-50;
+        @apply visible block z-50;
     }
 }
