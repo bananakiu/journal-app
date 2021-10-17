@@ -1,21 +1,51 @@
 <div class="w-full h-full">
-    <h1 class="text-4xl mb-6"><%= @category.title %> Tasks</h1>
+    <div class="flex items-center mb-6">
+        <%# header %>
+        <h1 class="text-4xl mr-5">
+            <%= @category.title %> Tasks
+        </h1>
 
-    <% if false %>
-        <ul>
-            <li><%= link_to "Edit", edit_category_path(@category) %></li>
-            <li>
-                <%=
-                    link_to "Destroy",
-                    category_path(@category),
+        <%# navigation %>
+        <div class="flex text-3xl">
+
+            <%# back %>
+            <a href=<%= categories_path %> class="
+            h-full mr-5
+            text-green-400 hover:text-green-500
+            has-tooltip
+            ">
+                <i class="fas fa-long-arrow-alt-left"></i>
+                <%= render 'shared/tooltip', msg: "Back", classes: "-ml-12" %>
+            </a>
+
+            <%# edit %>
+            <a href=<%= edit_category_path(@category) %> class="
+            h-full mr-4
+            text-blue-400 hover:text-blue-500
+            has-tooltip
+            ">
+                <i class="far fa-edit"></i>
+                <%= render 'shared/tooltip', msg: "Edit", classes: "-ml-10" %>
+            </a>
+
+            <%# delete %>
+            <%# TODO: add tooltip for delete %>
+            <%=
+                link_to raw("<i class\=\"far fa-trash-alt\"></i>"), @category,
                     method: :delete,
-                    data: { confirm: "Are you sure?" }
-                %>
-            </li>
-        </ul>
-    <% end %>
+                    data: { confirm: "Are you sure?" },
+                    class: "
+                    h-full
+                    text-red-400 hover:text-red-500
+                    "
+            %>
+        </div>
+    </div>
 
+    <%# tasks %>
     <%= render @category.tasks %>
+
+    <%# add task %>
     <a href=<%= new_category_task_path(@category) %> class="
     flex items-center justify-center
     h-14 px-4 mb-4
