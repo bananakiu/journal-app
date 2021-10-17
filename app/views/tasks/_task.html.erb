@@ -48,7 +48,7 @@ transition duration
         has-tooltip
         ">
             <i class="fas fa-expand-arrows-alt"></i>
-            <%= render 'shared/tooltip', msg: "Expand", classes: "-ml-12" %>
+            <%= render 'shared/tooltip', msg: "Expand"%>
         </a>
         <a href=<%= edit_category_task_path(@category, task.id) %> class="
         h-full mr-4 text-xl
@@ -56,7 +56,7 @@ transition duration
         has-tooltip
         ">
             <i class="far fa-edit"></i>
-            <%= render 'shared/tooltip', msg: "Edit", classes: "-ml-10" %>
+            <%= render 'shared/tooltip', msg: "Edit" %>
         </a>
         <%# TODO: add tooltip for delete %>
         <%=
