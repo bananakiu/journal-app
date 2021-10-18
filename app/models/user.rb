@@ -5,6 +5,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          has_many :categories
-
-  validates :email, presence: true, length: { maximum: 100 }
 end
