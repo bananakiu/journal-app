@@ -42,20 +42,55 @@
         </div>
     </div>
 
-    <%# tasks %>
-    <%= render @category.tasks %>
+    <div class="mb-6">
+        <%# header %>
+        <h1 class="text-3xl mb-4">
+            Overdue
+        </h1>
 
-    <%# add task %>
-    <a href=<%= new_category_task_path(@category) %> class="
-    flex items-center justify-center
-    h-14 px-4 mb-4
-    rounded-lg
-    text-gray-400 hover:text-white
-    bg-opacity-50 hover:bg-opacity-100
-    bg-gray-700
-    shadow-md hover:shadow-xl
-    transition duration
-    ">
-        <i class="fas fa-plus mr-3"></i> Add task
-    </a>
+        <%# tasks %>
+        <%= render @tasks_overdue %>
+
+        <%# add task %>
+        <%= render "add_task", category: @category%>
+    </div>
+
+    <div class="mb-6">
+        <%# header %>
+        <h1 class="text-3xl mb-4">
+            Today
+        </h1>
+
+        <%# tasks %>
+        <%= render @tasks_today %>
+
+        <%# add task %>
+        <%= render "add_task", category: @category%>
+    </div>
+
+    <div class="mb-6">
+        <%# header %>
+        <h1 class="text-3xl mb-4">
+            After Today
+        </h1>
+
+        <%# tasks %>
+        <%= render @tasks_after_today %>
+
+        <%# add task %>
+        <%= render "add_task", category: @category%>
+    </div>
+
+    <div class="mb-6">
+        <%# header %>
+        <h1 class="text-3xl mb-4">
+            No Date
+        </h1>
+
+        <%# tasks %>
+        <%= render @tasks_no_date %>
+
+        <%# add task %>
+        <%= render "add_task", category: @category%>
+    </div>
 </div>

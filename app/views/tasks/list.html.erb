@@ -3,35 +3,51 @@
         <h1 class="text-3xl mb-4">
             Overdue
         </h1>
-        <% @tasks_overdue.each do |task| %>
-            <%= render "task_cat", task: task %>
-        <% end %>
+        <% if @tasks_overdue.length > 0 %>
+            <% @tasks_overdue.each do |task| %>
+                <%= render "task_cat", task: task %>
+            <% end %>
+        <% else %>
+            <div class="text-gray-400 text-lg">No tasks</div>
+        <% end  %>
     </div>
 
     <div class="mb-6">
         <h1 class="text-3xl mb-4">
-            Today's Tasks
+            Today
         </h1>
-        <% @tasks_today.each do |task| %>
-            <%= render "task_cat", task: task %>
-        <% end %>
+        <% if @tasks_today.length > 0 %>
+            <% @tasks_today.each do |task| %>
+                <%= render "task_cat", task: task %>
+            <% end %>
+        <% else %>
+            <div class="text-gray-400 text-lg">No tasks</div>
+        <% end  %>
     </div>
 
     <div class="mb-6">
         <h1 class="text-3xl mb-4">
-            Tasks Due After Today
+            After Today
         </h1>
-        <% @tasks_after_today.each do |task| %>
-            <%= render "task_cat", task: task %>
-        <% end %>
+        <% if @tasks_after_today.length > 0 %>
+            <% @tasks_after_today.each do |task| %>
+                <%= render "task_cat", task: task %>
+            <% end %>
+        <% else %>
+            <div class="text-gray-400 text-lg">No tasks</div>
+        <% end  %>
     </div>
 
     <div>
         <h1 class="text-3xl mb-4">
             No Date
         </h1>
-        <% @tasks_no_date.each do |task| %>
-            <%= render "task_cat", task: task %>
-        <% end %>
+        <% if @tasks_no_date.length > 0 %>
+            <% @tasks_no_date.each do |task| %>
+                <%= render "task_cat", task: task %>
+            <% end %>
+        <% else %>
+            <div class="text-gray-400 text-lg">No tasks</div>
+        <% end  %>
     </div>
 </div>

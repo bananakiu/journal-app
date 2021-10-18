@@ -3,7 +3,15 @@ class TasksController < ApplicationController
     before_action :set_category, except: [:list]
     before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-    def index
+    def index        
+        # get all tasks in categories belonging to current_user
+        @tasks = @category.tasks
+
+        # get specific lists of tasks
+        @tasks_today = @tasks.where("date >= ? and date < ?", Date.current, Date.current+1).order("date, category_id")
+        @tasks_overdue = @tasks.where("date < ?", Date.current).order("date, category_id")
+        @tasks_no_date = @tasks.where(date: nil).order("category_id")
+        @tasks_after_today = @tasks.where("date > ?", Date.current).order("date")
     end
 
     def show
