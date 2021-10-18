@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
     end
 
     def show
+        redirect_to category_tasks_path(@category)
     end
     def new
         @category = current_user.categories.build

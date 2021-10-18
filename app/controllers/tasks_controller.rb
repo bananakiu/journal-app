@@ -4,7 +4,6 @@ class TasksController < ApplicationController
     before_action :set_task, only: [:show, :edit, :update, :destroy]
 
     def index
-        redirect_to @category
     end
 
     def show
@@ -38,6 +37,12 @@ class TasksController < ApplicationController
     def destroy
         @task.destroy
         redirect_to category_path(@category)
+    end
+
+    # custom routes
+    # GET /tasks
+    def list
+        @tasks = Tasks.all
     end
     
     private

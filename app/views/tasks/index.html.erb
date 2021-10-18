@@ -1,0 +1,61 @@
+<div class="w-full h-full">
+    <div class="flex items-center mb-6">
+        <%# header %>
+        <h1 class="text-4xl mr-5">
+            <%= @category.title %> Tasks
+        </h1>
+
+        <%# navigation %>
+        <div class="flex text-3xl">
+
+            <%# back %>
+            <a href=<%= categories_path %> class="
+            h-full mr-5
+            text-green-400 hover:text-green-500
+            has-tooltip
+            ">
+                <i class="fas fa-long-arrow-alt-left"></i>
+                <%= render 'shared/tooltip', msg: "Back", classes: "-ml-12" %>
+            </a>
+
+            <%# edit %>
+            <a href=<%= edit_category_path(@category) %> class="
+            h-full mr-4
+            text-blue-400 hover:text-blue-500
+            has-tooltip
+            ">
+                <i class="far fa-edit"></i>
+                <%= render 'shared/tooltip', msg: "Edit", classes: "-ml-10" %>
+            </a>
+
+            <%# delete %>
+            <%# TODO: add tooltip for delete %>
+            <%=
+                link_to raw("<i class\=\"far fa-trash-alt\"></i>"), @category,
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class: "
+                    h-full
+                    text-red-400 hover:text-red-500
+                    "
+            %>
+        </div>
+    </div>
+
+    <%# tasks %>
+    <%= render @category.tasks %>
+
+    <%# add task %>
+    <a href=<%= new_category_task_path(@category) %> class="
+    flex items-center justify-center
+    h-14 px-4 mb-4
+    rounded-lg
+    text-gray-400 hover:text-white
+    bg-opacity-50 hover:bg-opacity-100
+    bg-gray-700
+    shadow-md hover:shadow-xl
+    transition duration
+    ">
+        <i class="fas fa-plus mr-3"></i> Add task
+    </a>
+</div>
