@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_category
+    before_action :set_category, except: [:list]
     before_action :set_task, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -39,10 +39,20 @@ class TasksController < ApplicationController
         redirect_to category_path(@category)
     end
 
-    # custom routes
     # GET /tasks
     def list
-        @tasks = Tasks.all
+        # get categories the user owns
+        @categories = current_user.categories
+        redirect_to categories_path, notice: "Not authorized to access/edit this." if @categories.nil?
+        
+        # get all tasks in categories belonging to current_user
+        @tasks = Task.where(category_id: [@categories.select(:id)])#.order("date DESC, category_id")
+
+        # get specific lists of tasks
+        @tasks_today = @tasks.where("date >= ? and date < ?", Date.current, Date.current+1).order("date, category_id")
+        @tasks_overdue = @tasks.where("date < ?", Date.current).order("date, category_id")
+        @tasks_no_date = @tasks.where(date: nil).order("category_id")
+        @tasks_after_today = @tasks.where("date > ?", Date.current).order("date")
     end
     
     private

@@ -1,0 +1,37 @@
+<div class="w-full h-full">
+    <div class="mb-6">
+        <h1 class="text-3xl mb-4">
+            Overdue
+        </h1>
+        <% @tasks_overdue.each do |task| %>
+            <%= render "task_cat", task: task %>
+        <% end %>
+    </div>
+
+    <div class="mb-6">
+        <h1 class="text-3xl mb-4">
+            Today's Tasks
+        </h1>
+        <% @tasks_today.each do |task| %>
+            <%= render "task_cat", task: task %>
+        <% end %>
+    </div>
+
+    <div class="mb-6">
+        <h1 class="text-3xl mb-4">
+            Tasks Due After Today
+        </h1>
+        <% @tasks_after_today.each do |task| %>
+            <%= render "task_cat", task: task %>
+        <% end %>
+    </div>
+
+    <div>
+        <h1 class="text-3xl mb-4">
+            No Date
+        </h1>
+        <% @tasks_no_date.each do |task| %>
+            <%= render "task_cat", task: task %>
+        <% end %>
+    </div>
+</div>

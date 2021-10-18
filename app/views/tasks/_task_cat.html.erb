@@ -1,0 +1,94 @@
+<%# TODO: update task.complete when pressed %>
+<%# TODO: sort by due date %>
+
+<div class="
+flex items-center justify-
+h-14 px-4 mb-4
+rounded-lg
+bg-gray-700
+shadow-md hover:shadow-xl
+<%= "text-gray-500 line-through" if task.complete %>
+transition duration
+">
+    <%# completion status %>
+    <div class="
+    flex items-center justify-start
+    w-full sm:w-5/12
+    cursor-default
+    ">
+        <%# checkbox %>
+        <input type="checkbox" class="w-4 h-4 mr-3" <%= "checked" if task.complete %>>
+        
+        <%# task name %>
+        <a href=<%= category_task_path(task.category, task.id) %> class="
+        hover:text-gray-300 mr-2
+        ">
+            <%= task.name %>
+        </a>
+
+        <%# category title %>
+        <a href=<%= category_path(task.category) %> class="
+        <% if task.complete %>
+            text-gray-500 border-gray-500
+            hover:text-gray-300 hover:border-gray-300
+        <% else %>
+            text-purple-400 border-purple-400
+            hover:text-purple-500 hover:border-purple-500
+        <% end %>
+        border-2 px-1 py-0.5 rounded-lg
+        hidden lg:block
+        ">
+            <%= task.category.title %>
+        </a>
+    </div>
+
+    <%# due date %>
+    <div class="
+    hidden lg:flex justify-center items-center
+    flex-grow
+    cursor-default
+    has-tooltip
+    <%= task.date.nil? || task.complete ? "text-gray-500" : "text-yellow-200" %>
+    ">
+        <% if !task.date.nil? %>
+            <i class="far fa-calendar text-xl mr-2"></i> <%= task.date.strftime("%B %d, %Y") %>
+            <%= render 'shared/tooltip', msg: task.date.strftime("%B %d, %Y"), classes: "-mt-16" %>
+        <% else %>
+            <i class="far fa-calendar-times text-xl mr-2"></i> No date
+        <% end %>
+    </div>
+
+    <%# navigation %>
+    <div class="
+    flex-grow lg:w-5/12 
+    hidden sm:flex justify-end
+    ">
+        <a href=<%= category_task_path(task.category, task.id) %> class="
+        h-full mr-5 text-xl
+        text-green-400 hover:text-green-500
+        has-tooltip
+        ">
+            <i class="fas fa-expand-arrows-alt"></i>
+            <%= render 'shared/tooltip', msg: "Expand"%>
+        </a>
+        <a href=<%= edit_category_task_path(task.category, task.id) %> class="
+        h-full mr-4 text-xl
+        text-blue-400 hover:text-blue-500
+        has-tooltip
+        ">
+            <i class="far fa-edit"></i>
+            <%= render 'shared/tooltip', msg: "Edit" %>
+        </a>
+        <%# TODO: add tooltip for delete %>
+        <%=
+            link_to raw("<i class\=\"far fa-trash-alt\"></i>"),
+                [task.category, task],
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "
+                h-full text-xl
+                text-red-400 hover:text-red-500
+                "
+        %>
+    </div>
+</div>
