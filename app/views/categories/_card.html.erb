@@ -6,16 +6,12 @@
     bg-gray-700
     transition duration-200
     ">
-        <h1 class="text-3xl">
+        <h1 class="text-3xl truncate">
             <a href=<%= category_path(category) %>>
-                <% if category.title.length <= 13 %>
-                    <span><%= category.title %></span>
-                <% else %>
-                    <span class = "has-tooltip">
-                        <%= category.title[0...13] %>...
-                        <%= render 'shared/tooltip', msg: category.title %>
-                    </span>
-                <% end %>
+                <span class = "has-tooltip">
+                    <%= category.title %>
+                    <%= render 'shared/tooltip', msg: category.title %>
+                </span>
             </a>
         </h1>
         
