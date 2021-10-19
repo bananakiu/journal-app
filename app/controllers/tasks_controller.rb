@@ -24,7 +24,7 @@ class TasksController < ApplicationController
     def create
         @task = @category.tasks.new(task_params)
         if @task.save
-            redirect_to category_path(@category)
+            redirect_to category_path(@category), notice: "Successfully created a task!"
         else
             render :new
         end
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     def update
         if @task.update(task_params)
             # redirect_to @task
-            redirect_to category_path(@category)
+            redirect_to category_path(@category), notice: "Successfully updated task!"
         else
             render :edit
         end
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
 
     def destroy
         @task.destroy
-        redirect_to category_path(@category)
+        redirect_to category_path(@category), notice: "Successfully deleted task!"
     end
 
     # GET /tasks

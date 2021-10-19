@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
         @category = current_user.categories.build(category_params)
     
         if @category.save
-            redirect_to categories_path
+            redirect_to categories_path, notice: "Successfully created a category!"
         else
             render :new
         end
@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
 
     def update
         if @category.update(category_params)
-            redirect_to categories_path
+            redirect_to categories_path, notice: "Successfully edited a category!"
         else
             render :edit
         end
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
         correct_user # ? not sure why, but destroy doesn't work if I don't explicitly call correct_user here (even if I have a before_action)
         @category.destroy
     
-        redirect_to categories_path
+        redirect_to categories_path, notice: "Successfully deleted a category!"
     end
 
     def correct_user
