@@ -62,7 +62,7 @@ class CategoryCrudTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
 
-    # validate if category was edited
+    # validate if category title is seen
     assert_select "h1", "MyString" + " Tasks"
   end
 
@@ -70,7 +70,7 @@ class CategoryCrudTest < ActionDispatch::IntegrationTest
     # sign in
     sign_in users(:one)
 
-    # go to category page
+    # delete category
     assert_difference("Category.count", -1) do
       delete category_path(categories(:one))
     end
