@@ -30,7 +30,7 @@
               <i class="fas fa-feather-alt text-2xl mr-2"></i>Taskly
             </a>
           </li>
-          <li class="h-full flex items-center justify-center">
+          <li class="h-full hidden xl:flex items-center justify-center">
             <a href="/" class="
             flex items-center justify-center
             h-full px-4 
@@ -41,7 +41,7 @@
           </li>
           <li class="h-full flex items-center justify-center">
             <a href=<%= categories_path %> class="
-            flex items-center justify-center
+            hidden md:flex items-center justify-center
             h-full px-4 
             hover:bg-green-700 transition-all duration-200
             ">
@@ -62,14 +62,14 @@
         <%# right nav-items %>
         <ul class="flex items-center h-full">
           <% if user_signed_in? %>
-            <li class="h-full flex items-center justify-center">
+            <li class="h-full hidden xl:flex items-center justify-center">
               <div class= "px-4 py-5 h-full">
                 Welcome, <%= current_user.email %>!
               </div>
             </li>
             <li class="h-full flex items-center justify-center">
               <a href=<%= edit_user_registration_path%> class="
-              flex items-center justify-center
+              hidden md:flex items-center justify-center
               h-full px-4 
               hover:bg-green-700 transition-all duration-200
               ">
