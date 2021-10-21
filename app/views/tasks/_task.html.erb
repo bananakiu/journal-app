@@ -15,7 +15,10 @@ transition duration
     w-1/2 lg:w-1/4
     cursor-default
     ">
-        <input type="checkbox" class="w-4 h-4 mr-3" <%= "checked" if task.complete %>>
+        <%= form_with class: "flex justify-center items-center", model: [ task.category, task ] do |f| %>
+            <%= f.check_box :complete, class: "w-4 h-4 mr-3", onchange: "this.form.submit();" %>
+        <% end %>
+
         <a href=<%= category_task_path(@category, task.id) %> class="
         hover:text-gray-300
         ">
