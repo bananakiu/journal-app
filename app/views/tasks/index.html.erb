@@ -15,7 +15,7 @@
             has-tooltip
             ">
                 <i class="fas fa-long-arrow-alt-left"></i>
-                <%= render 'shared/tooltip', msg: "Back", classes: "-ml-12" %>
+                <%= render 'shared/tooltip', msg: "Back" %>
             </a>
 
             <%# edit %>
@@ -25,20 +25,24 @@
             has-tooltip
             ">
                 <i class="far fa-edit"></i>
-                <%= render 'shared/tooltip', msg: "Edit", classes: "-ml-10" %>
+                <%= render 'shared/tooltip', msg: "Edit" %>
             </a>
 
             <%# delete %>
             <%# TODO: add tooltip for delete %>
             <%=
-                link_to raw("<i class\=\"far fa-trash-alt\"></i>"), @category,
+                link_to @category,
                     method: :delete,
                     data: { confirm: "Are you sure?" },
                     class: "
                     h-full
                     text-red-400 hover:text-red-500
-                    "
+                    has-tooltip
+                    " do
             %>
+                <i class="far fa-trash-alt"></i>
+                <%= render 'shared/tooltip', msg: "Delete" %>
+            <% end %>
         </div>
     </div>
 

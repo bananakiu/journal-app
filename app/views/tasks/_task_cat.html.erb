@@ -81,16 +81,18 @@ transition duration
             <i class="far fa-edit"></i>
             <%= render 'shared/tooltip', msg: "Edit" %>
         </a>
-        <%# TODO: add tooltip for delete %>
         <%=
-            link_to raw("<i class\=\"far fa-trash-alt\"></i>"),
-                [task.category, task],
+            link_to [task.category, task],
                 method: :delete,
                 data: { confirm: "Are you sure?" },
                 class: "
                 h-full text-xl
                 text-red-400 hover:text-red-500
-                "
+                has-tooltip
+                " do
         %>
+            <i class="far fa-trash-alt"></i>
+            <%= render 'shared/tooltip', msg: "Delete" %>
+        <% end %>
     </div>
 </div>
