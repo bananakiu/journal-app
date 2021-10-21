@@ -16,7 +16,7 @@ transition duration
     cursor-default
     ">
         <%= form_with class: "flex justify-center items-center", model: [ task.category, task ] do |f| %>
-            <%= f.check_box :complete, class: "w-4 h-4 mr-3", onchange: "this.form.submit();" %>
+            <%= f.check_box :complete, class: "w-5 h-5 mr-3", onchange: "this.form.submit();" %>
         <% end %>
 
         <a href=<%= category_task_path(@category, task.id) %> class="
