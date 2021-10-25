@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application' %> <%# https://stackoverflow.com/questions/59831329/rails-6-and-tailwind-css-does-not-deploy-to-heroku %>
   </head>
 
   <body class="
